@@ -3,11 +3,9 @@ FROM maven:3.9.6-eclipse-temurin-17 AS build
 
 WORKDIR /app
 
-# Copy ONLY project folder
 COPY codereviewer/pom.xml .
 COPY codereviewer/src ./src
 
-# Build jar
 RUN mvn clean package -DskipTests
 
 
@@ -16,7 +14,6 @@ FROM eclipse-temurin:17-jdk-alpine
 
 WORKDIR /app
 
-# Copy jar
 COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
