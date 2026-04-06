@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>View Code</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background: linear-gradient(to right, #667eea, #764ba2);
+        }
+
+        .card {
+            border-radius: 15px;
+        }
+
+        .code-box {
+            background-color: #1e1e1e;
+            color: #00ff9f;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+
+        .label-title {
+            font-weight: 600;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+
+        <div class="col-md-10">
+
+            <div class="card shadow-lg">
+
+                <!-- Header -->
+                <div class="card-header bg-dark text-white text-center">
+                    <h3>📄 Code Review Details</h3>
+                </div>
+
+                <!-- Body -->
+                <div class="card-body p-4">
+
+                    <!-- Developer Info -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p class="label-title">👤 Developer Name</p>
+                            <p th:text="${code.developerName}" class="fs-5"></p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <p class="label-title">💻 Language</p>
+                            <span class="badge bg-primary fs-6" th:text="${code.language}"></span>
+                        </div>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="mb-3">
+                        <p class="label-title">📌 Code Title</p>
+                        <p th:text="${code.title}" class="fs-5 fw-bold"></p>
+                    </div>
+
+                    <!-- Code -->
+                    <div class="mb-4">
+                        <p class="label-title">🧾 Code Snippet</p>
+                        <div class="code-box">
+                            <pre th:text="${code.code}"></pre>
+                        </div>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <p class="label-title">📊 Review Status</p>
+
+                            <span class="badge bg-success fs-6"
+                                  th:if="${code.reviewStatus == 'Good'}">Good</span>
+
+                            <span class="badge bg-warning text-dark fs-6"
+                                  th:if="${code.reviewStatus == 'Warning'}">Warning</span>
+
+                            <span class="badge bg-danger fs-6"
+                                  th:if="${code.reviewStatus == 'Poor'}">Poor</span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <p class="label-title">💬 Comments</p>
+                            <p th:text="${code.comments}" class="fs-6 text-muted"></p>
+                        </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="text-center">
+                        <a href="/reviews" class="btn btn-secondary px-4">
+                            ⬅ Back to Reviews
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
