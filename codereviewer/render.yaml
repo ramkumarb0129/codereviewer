@@ -1,7 +1,7 @@
 services:
   - type: web
     name: codereviewer
+    runtime: docker
+    dockerfilePath: ./Dockerfile
     plan: free
-    buildCommand: "mvn clean package"
-    startCommand: "java -jar target/*.jar"
     autoDeploy: true
