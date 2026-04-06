@@ -2,6 +2,6 @@ services:
   - type: web
     name: codereviewer
     runtime: docker
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ./codereviewer/Dockerfile
     plan: free
     autoDeploy: true
