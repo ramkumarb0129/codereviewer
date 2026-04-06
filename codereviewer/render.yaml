@@ -1,9 +1,8 @@
 services:
   - type: web
     name: codereviewer
-    runtime: docker
-    dockerfilePath: ./Dockerfile
+    env: java
     plan: free
-    envVars:
-      - key: PORT
-        value: 8080
+    buildCommand: "./mvnw clean package"
+    startCommand: "java -jar target/*.jar"
+    autoDeploy: true
